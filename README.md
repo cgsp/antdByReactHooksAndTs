@@ -1,4 +1,4 @@
-## git-cz配置
+## git-cz配置1
 - 规范化 commit
   请参考 [你可能已经忽略的 git commit 规范](https://juejin.im/post/5e0c82a15188253a907111dc)、[快速指南](https://juejin.im/post/5eba4d4f6fb9a043890a33a4) 了解这样做的意义.
 
