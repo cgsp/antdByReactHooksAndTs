@@ -70,7 +70,18 @@
     "dev": "npm run start",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "commit": "git-cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+    }
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -144,6 +155,8 @@
   },
   "devDependencies": {
     "commitizen": "^4.1.2",
-    "cz-conventional-changelog": "^3.2.0"
+    "cz-conventional-changelog": "^3.2.0",
+    "gitmoji-cli": "^3.2.6",
+    "husky": "^4.2.5"
   }
 }
