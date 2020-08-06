@@ -74,7 +74,7 @@ let gsp3: Gsp3<string, number> = {
 class GspClass1<T> {
   private data = []
   // add(item: T) {
-  //   this.data.push(item)
+  // this.data.push(item)
   // }
 }
 

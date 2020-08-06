@@ -10,8 +10,7 @@ interface ILoaderProps {
 }
 
 const withLoader = <P extends ILoaderState>(
-  WrappedComp: React.ComponentType<P>,
-  url: string
+  WrappedComp: React.ComponentType<P>
 ) => {
   return class LoaderComp extends Component<
     Partial<ILoaderProps>,
@@ -35,7 +34,7 @@ const withLoader = <P extends ILoaderState>(
           data: { name: 'gsp' },
           isLoading: false,
         })
-      }, 1000)
+      }, 2000)
     }
 
     render() {
@@ -53,4 +52,5 @@ const withLoader = <P extends ILoaderState>(
   }
 }
 
+export default withLoader
 // withLoader(<p>111</p>, '11')
