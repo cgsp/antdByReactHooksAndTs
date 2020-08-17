@@ -11,6 +11,23 @@ interface IShowResult {
   name: string
 }
 
+interface IThemeProps {
+  [key: string]: { color: string; backGround: string }
+}
+
+const themes: IThemeProps = {
+  light: {
+    color: '#000',
+    backGround: '#eee',
+  },
+  dark: {
+    color: '#fff',
+    backGround: '#222',
+  },
+}
+
+export const ThemeContext = React.createContext(themes.dark)
+
 const DogShow: React.FC<{ data: IShowResult }> = ({ data }) => {
   return (
     <React.Fragment>
@@ -28,21 +45,23 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          <button onClick={() => setShowMouseTracker(!showMouseTracker)}>
-            toggle showMouseTracker
-          </button>
-        </p>
-        <Hello />
-        <p>
-          x:{positions.x}，y:{positions.y}
-        </p>
-        <WrapedDogShow />
-        {loading ? '加载中...' : data && data.name}
-        <LinkButton />
-      </header>
+      <ThemeContext.Provider value={themes.dark}>
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>
+            <button onClick={() => setShowMouseTracker(!showMouseTracker)}>
+              toggle showMouseTracker
+            </button>
+          </p>
+          <Hello />
+          <p>
+            x:{positions.x}，y:{positions.y}
+          </p>
+          <WrapedDogShow />
+          {loading ? '加载中...' : data && data.name}
+          <LinkButton />
+        </header>
+      </ThemeContext.Provider>
     </div>
   )
 }

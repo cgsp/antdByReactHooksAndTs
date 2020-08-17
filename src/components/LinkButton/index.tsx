@@ -1,10 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
+import { ThemeContext } from '../../App'
 
 const LinkButton: React.FC = () => {
   const [like, setLike] = useState(0)
   const [on, setOn] = useState(true)
   const likeRef = useRef(0)
   const didMountRef = useRef(false)
+  const domRef = useRef<HTMLInputElement>(null)
+  const theme = useContext(ThemeContext)
+  console.log(theme)
 
   useEffect(() => {
     if (didMountRef.current) {
@@ -27,8 +31,15 @@ const LinkButton: React.FC = () => {
     }, 3000)
   }
 
+  useEffect(() => {
+    if (domRef && domRef.current) {
+      domRef.current.focus()
+    }
+  })
+
   return (
     <React.Fragment>
+      <input type="text" ref={domRef} />
       <button
         onClick={() => {
           setLike(like + 1)
