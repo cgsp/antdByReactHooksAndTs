@@ -1,12 +1,14 @@
 'use strict'
-
 const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
 const resolve = require('resolve')
 const PnpWebpackPlugin = require('pnp-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+// 严格遵循大小写敏感的
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
+// 将包含runtime-的js，插入到html，做匿名js
+// new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime-.+[.]js/])
 const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -65,7 +67,7 @@ module.exports = function (webpackEnv) {
   // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
   // Omit trailing slash as %PUBLIC_URL%/xyz looks better than %PUBLIC_URL%xyz.
   // Get environment variables to inject into our app.
-  const env = getClientEnvironment(paths.publicUrlOrPath.slice(0, -1))
+  const customerEnv = getClientEnvironment(paths.publicUrlOrPath.slice(0, -1))
 
   // common function to get style loaders
   const getStyleLoaders = (cssOptions, preProcessor) => {
@@ -289,6 +291,7 @@ module.exports = function (webpackEnv) {
       extensions: paths.moduleFileExtensions
         .map((ext) => `.${ext}`)
         .filter((ext) => useTypeScript || !ext.includes('ts')),
+
       alias: {
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
@@ -302,6 +305,7 @@ module.exports = function (webpackEnv) {
         '@components': path.join(__dirname, '..', 'src/components'),
         '@styles': path.join(__dirname, '..', 'src/styles'),
         '@utils': path.join(__dirname, '..', 'src/utils'),
+        '@hooks': path.join(__dirname, '..', 'src/hooks'),
       },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding
@@ -548,7 +552,7 @@ module.exports = function (webpackEnv) {
       // <link rel="icon" href="%PUBLIC_URL%/favicon.ico">
       // It will be an empty string unless you specify "homepage"
       // in `package.json`, in which case it will be the pathname of that URL.
-      new InterpolateHtmlPlugin(HtmlWebpackPlugin, env.raw),
+      new InterpolateHtmlPlugin(HtmlWebpackPlugin, customerEnv.raw),
       // This gives some necessary context to module not found errors, such as
       // the requesting resource.
       new ModuleNotFoundPlugin(paths.appPath),
@@ -557,7 +561,7 @@ module.exports = function (webpackEnv) {
       // It is absolutely essential that NODE_ENV is set to production
       // during a production build.
       // Otherwise React will be compiled in the very slow development mode.
-      new webpack.DefinePlugin(env.stringified),
+      new webpack.DefinePlugin(customerEnv.stringified),
       // This is necessary to emit hot updates (currently CSS only):
       isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
       // Watcher doesn't work well if you mistype casing in a path so we use

@@ -69,9 +69,11 @@
   },
   "scripts": {
     "dev": "npm run start",
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js",
+    "start": "cross-env BUILD_ENV=development node scripts/start.js",
+    "build-test": "cross-env BUILD_ENV=test node scripts/build.js",
+    "build-uat": "cross-env BUILD_ENV=uat node scripts/build.js",
+    "build-prod": "cross-env BUILD_ENV=production node scripts/build.js",
+    "unit-test": "node scripts/unit-test.js",
     "commit": "git-cz"
   },
   "config": {
@@ -151,6 +153,7 @@
   },
   "devDependencies": {
     "commitizen": "^4.1.2",
+    "cross-env": "^7.0.2",
     "cz-conventional-changelog": "^3.2.0",
     "gitmoji-cli": "^3.2.6",
     "node-sass": "^4.14.1"
