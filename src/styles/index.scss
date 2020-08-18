@@ -1,0 +1,6 @@
+// _variables 这种scss文件，只能被其他的scss文件导入，没办法被单独使用
+// 导入的时候，_variables 需要写为 variables
+// 变量
+@import './variables';
+// 重置
+@import './reboot';
