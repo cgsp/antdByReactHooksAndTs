@@ -9,16 +9,39 @@ console.log('BUILD_ENV', process.env.REACT_APP_BUILD_ENV)
 function App() {
   return (
     <div className="app">
-      <Button disabled btnType={ButtonType.Danger} size={ButtonSize.Small}>
-        我是按钮
+      <Button
+        autoFocus
+        className="customer"
+        onClick={(e) => console.log('哈哈1', e)}
+        btnType={ButtonType.Default}
+        size={ButtonSize.Small}
+      >
+        Hello
+      </Button>
+      <Button disabled btnType={ButtonType.Default} size={ButtonSize.Small}>
+        Disabled Button
+      </Button>
+      <Button btnType={ButtonType.Primary} size={ButtonSize.Large}>
+        Large Primary
+      </Button>
+      <Button btnType={ButtonType.Danger} size={ButtonSize.Small}>
+        Small Danger
       </Button>
       <Button
         btnType={ButtonType.Link}
-        size={ButtonSize.Large}
+        size={ButtonSize.Small}
+        href="http://www.baidu.com"
+        target="_blank"
+      >
+        Baidu Link
+      </Button>
+      <Button
+        btnType={ButtonType.Link}
+        size={ButtonSize.Small}
         href="http://www.baidu.com"
         disabled
       >
-        我是按钮
+        Disabled Link
       </Button>
     </div>
   )
