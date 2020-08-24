@@ -2,6 +2,27 @@
   "name": "ts-react1",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "dev": "npm run start",
+    "start": "cross-env BUILD_ENV=development node scripts/start.js",
+    "build-test": "cross-env BUILD_ENV=test node scripts/build.js",
+    "build-uat": "cross-env BUILD_ENV=uat node scripts/build.js",
+    "build-prod": "cross-env BUILD_ENV=production node scripts/build.js",
+    "unit-test": "node scripts/unit-test.js",
+    "commit": "git-cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "commitizen": "^4.1.2",
+    "cross-env": "^7.0.2",
+    "cz-conventional-changelog": "^3.2.0",
+    "gitmoji-cli": "^3.2.6",
+    "node-sass": "^4.14.1"
+  },
   "dependencies": {
     "@babel/core": "7.9.0",
     "@svgr/webpack": "4.3.3",
@@ -68,20 +89,6 @@
     "webpack-dev-server": "3.10.3",
     "webpack-manifest-plugin": "2.2.0",
     "workbox-webpack-plugin": "4.3.1"
-  },
-  "scripts": {
-    "dev": "npm run start",
-    "start": "cross-env BUILD_ENV=development node scripts/start.js",
-    "build-test": "cross-env BUILD_ENV=test node scripts/build.js",
-    "build-uat": "cross-env BUILD_ENV=uat node scripts/build.js",
-    "build-prod": "cross-env BUILD_ENV=production node scripts/build.js",
-    "unit-test": "node scripts/unit-test.js",
-    "commit": "git-cz"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -152,12 +159,5 @@
     "presets": [
       "react-app"
     ]
-  },
-  "devDependencies": {
-    "commitizen": "^4.1.2",
-    "cross-env": "^7.0.2",
-    "cz-conventional-changelog": "^3.2.0",
-    "gitmoji-cli": "^3.2.6",
-    "node-sass": "^4.14.1"
   }
 }
