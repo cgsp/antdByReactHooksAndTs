@@ -48,10 +48,12 @@ function App() {
         </Button>
       </div>
       <div className="box">
-        <Menu defaultIndex={0}>
-          <MenuItem>link1</MenuItem>
-          <MenuItem>link2</MenuItem>
-          <MenuItem>link3</MenuItem>
+        <Menu defaultIndex={0} onSelected={(index) => console.log(index)}>
+          <MenuItem index={0}>link1</MenuItem>
+          <MenuItem index={1} disabled>
+            link2
+          </MenuItem>
+          <MenuItem index={2}>link3</MenuItem>
         </Menu>
       </div>
     </div>
