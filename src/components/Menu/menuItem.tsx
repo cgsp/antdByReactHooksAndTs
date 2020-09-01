@@ -2,14 +2,14 @@ import React, { useContext } from 'react'
 import classnames from 'classnames'
 import { MenuContext } from './index'
 
-export interface MenuItemProps {
+export interface IMenuItemProps {
   index: number
   disabled?: boolean
   className?: string
   style?: React.CSSProperties
 }
 
-const MenuItem: React.FC<MenuItemProps> = ({
+const MenuItem: React.FC<IMenuItemProps> = ({
   index,
   disabled,
   className,
@@ -34,5 +34,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
     </li>
   )
 }
+
+MenuItem.displayName = 'MenuItem'
 
 export default MenuItem

@@ -3,6 +3,7 @@ import getGspName from '@utils/getGspName.js'
 import Button, { ButtonType, ButtonSize } from '@components/Button'
 import Menu from '@components/Menu'
 import MenuItem from '@components/Menu/menuItem'
+import DisplayName from '@components/Test/DisplayName'
 import './App.scss'
 
 console.log(getGspName())
@@ -10,7 +11,7 @@ console.log('BUILD_ENV', process.env.REACT_APP_BUILD_ENV)
 
 function App() {
   return (
-    <div className="app">
+    <div className="app" data-testid="testAppId">
       <div className="box">
         <Button
           autoFocus
@@ -55,6 +56,9 @@ function App() {
           </MenuItem>
           <MenuItem index={2}>link3</MenuItem>
         </Menu>
+      </div>
+      <div className="box">
+        <DisplayName name="gsp" sex="man" />
       </div>
     </div>
   )
