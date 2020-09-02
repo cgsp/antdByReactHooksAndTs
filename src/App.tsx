@@ -2,7 +2,8 @@ import React from 'react'
 import getGspName from '@utils/getGspName.js'
 import Button, { ButtonType, ButtonSize } from '@components/Button'
 import Menu from '@components/Menu'
-import MenuItem from '@components/Menu/menuItem'
+import MenuItem from '@components/Menu/MenuItem'
+import SubMenu from '@components/Menu/SubMenu'
 import DisplayName from '@components/Test/DisplayName'
 import './App.scss'
 
@@ -49,12 +50,21 @@ function App() {
         </Button>
       </div>
       <div className="box">
-        <Menu defaultIndex={0} onSelected={(index) => console.log(index)}>
-          <MenuItem index={0}>link1</MenuItem>
-          <MenuItem index={1} disabled>
-            link2
-          </MenuItem>
-          <MenuItem index={2}>link3</MenuItem>
+        <Menu
+          defaultIndex={'0'}
+          onSelected={(index) => console.log(index)}
+          // mode="horizontal"
+          mode="vertical"
+          defaultOpenSubMenus={['3']}
+        >
+          <MenuItem>link1</MenuItem>
+          <MenuItem disabled>link2</MenuItem>
+          <MenuItem>link3</MenuItem>
+          <SubMenu title="dropdown">
+            <MenuItem>dropdown1</MenuItem>
+            <MenuItem>dropdown2</MenuItem>
+          </SubMenu>
+          {/* <li>11</li> */}
         </Menu>
       </div>
       <div className="box">

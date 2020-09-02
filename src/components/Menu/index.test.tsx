@@ -6,7 +6,7 @@ import {
   cleanup,
 } from '@testing-library/react'
 import Menu, { IMenuProps } from './index'
-import MenuItem from './menuItem'
+import MenuItem from './MenuItem'
 
 const testProps: IMenuProps = {
   defaultIndex: 0,
@@ -48,8 +48,8 @@ describe('test Menu and MenuItem component', () => {
     expect(menuElement).toBeInTheDocument()
     expect(menuElement).toHaveClass('gsp-menu test')
     expect(menuElement.getElementsByTagName('li').length).toEqual(3)
-    expect(activeElement).toHaveClass('gsp-menu-item is-active')
-    expect(disabledElement).toHaveClass('gsp-menu-item is-disabled')
+    expect(activeElement).toHaveClass('menu-item is-active')
+    expect(disabledElement).toHaveClass('menu-item is-disabled')
   })
   it('click items should change active and call the right callback', () => {
     const thirdItem = wrapper.getByText('xyz')
