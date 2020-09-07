@@ -5,7 +5,9 @@ import Menu from '@components/Menu'
 import MenuItem from '@components/Menu/MenuItem'
 import SubMenu from '@components/Menu/SubMenu'
 import DisplayName from '@components/Test/DisplayName'
+import Icon from '@components/Icon'
 import './App.scss'
+// library.add(faCheckSquare, faCoffee)
 
 console.log(getGspName())
 console.log('BUILD_ENV', process.env.REACT_APP_BUILD_ENV)
@@ -69,6 +71,12 @@ function App() {
       </div>
       <div className="box">
         <DisplayName name="gsp" sex="man" />
+      </div>
+      <div className="box">
+        {/* <FontAwesomeIcon icon={faCoffee} size={'10x'} pulse /> */}
+        {/* <FontAwesomeIcon icon={'arrow-down'} size={'10x'} pulse /> */}
+        <Icon icon="coffee" theme="danger" size="10x" />
+        <Icon icon="arrow-down" theme="primary" size="10x" />
       </div>
     </div>
   )
