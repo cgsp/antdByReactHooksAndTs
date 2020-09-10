@@ -76,7 +76,12 @@ function App() {
         {/* <FontAwesomeIcon icon={faCoffee} size={'10x'} pulse /> */}
         {/* <FontAwesomeIcon icon={'arrow-down'} size={'10x'} pulse /> */}
         <Icon icon="coffee" theme="danger" size="10x" />
-        <Icon icon="arrow-down" theme="primary" size="10x" />
+        <Icon
+          icon="arrow-down"
+          theme="primary"
+          size="10x"
+          className="test-arrow"
+        />
       </div>
     </div>
   )
