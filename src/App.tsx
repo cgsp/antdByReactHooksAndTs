@@ -55,8 +55,8 @@ function App() {
         <Menu
           defaultIndex={'0'}
           onSelected={(index) => console.log(index)}
-          // mode="horizontal"
-          mode="vertical"
+          mode="horizontal"
+          // mode="vertical"
           defaultOpenSubMenus={['3']}
         >
           <MenuItem>link1</MenuItem>
