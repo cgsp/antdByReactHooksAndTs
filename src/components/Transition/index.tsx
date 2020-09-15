@@ -10,12 +10,15 @@ type AnimationName =
 
 type ITransitionProps = CSSTransitionProps & {
   animation?: AnimationName
+  // wrapper 这个属性是为了防止被包裹的节点，也有transition属性，会覆盖本组件的这个属性
+  wrapper?: boolean
 }
 
 const Transition: React.FC<ITransitionProps> = ({
   children,
   classNames,
   animation,
+  wrapper,
   ...restProps
 }) => {
   return (
@@ -23,7 +26,7 @@ const Transition: React.FC<ITransitionProps> = ({
       classNames={classNames ? classNames : animation}
       {...restProps}
     >
-      {children}
+      {wrapper ? <div>{children}</div> : children}
     </CSSTransition>
   )
 }

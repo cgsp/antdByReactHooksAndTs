@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import getGspName from '@utils/getGspName.js'
 import Button, { ButtonType, ButtonSize } from '@components/Button'
 import Menu from '@components/Menu'
@@ -6,6 +6,7 @@ import MenuItem from '@components/Menu/MenuItem'
 import SubMenu from '@components/Menu/SubMenu'
 import DisplayName from '@components/Test/DisplayName'
 import Icon from '@components/Icon'
+import Transition from '@components/Transition'
 import './App.scss'
 // library.add(faCheckSquare, faCoffee)
 
@@ -13,6 +14,7 @@ console.log(getGspName())
 console.log('BUILD_ENV', process.env.REACT_APP_BUILD_ENV)
 
 function App() {
+  const [show, setShow] = useState(false)
   return (
     <div className="app" data-testid="testAppId">
       <div className="box">
@@ -83,6 +85,24 @@ function App() {
           className="test-arrow"
         />
       </div>
+      <div className="box">
+        <Button size="lg" onClick={() => setShow(!show)}>
+          动画切换
+        </Button>
+        <Transition in={show} timeout={300} animation="zoom-in-left">
+          <div>
+            <p>我是文本1</p>
+            <p>我是文本2</p>
+            <p>我是文本1</p>
+            <p>我是文本1</p>
+            <p>我是文本1</p>
+            <p>我是文本1</p>
+            <p>我是文本1</p>
+            <Button size="lg">哈哈哈哈</Button>
+          </div>
+        </Transition>
+      </div>
+      <div className="box">哈哈</div>
     </div>
   )
 }

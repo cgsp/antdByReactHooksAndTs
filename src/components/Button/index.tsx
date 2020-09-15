@@ -13,6 +13,8 @@ export enum ButtonSize {
   Small = 'sm',
 }
 
+// export type ButtonSize = 'lg' | 'sm'
+
 interface BaseButtonProps {
   className?: string
   href?: string
