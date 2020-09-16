@@ -1,6 +1,7 @@
 module.exports = {
   "stories": [
-    "../src/**/*.stories.mdx",
+    // 默认打开的第一个地址
+    "../src/stories/OfficialExample/Introduction.stories.mdx",
     "../src/**/*.stories.@(js|jsx|ts|tsx)"
   ],
   "addons": [
