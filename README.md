@@ -8,3 +8,7 @@
 - fontawesome icons
   [git 地址](https://github.com/FortAwesome/react-fontawesome)
   [官网地址](https://fontawesome.com/icons)
+- story book
+  [story book官网](https://storybook.js.org/)
+  [喜马拉雅国际版](http://npm.ximalaya.com/package/@xmly/cat-ui)
+  [喜马拉雅国际版story book](http://static2.test.ximalaya.com/yx/cat-ui/last/out/index.html?path=/story/%E9%80%9A%E7%94%A8-avatar-%E5%A4%B4%E5%83%8F--size)

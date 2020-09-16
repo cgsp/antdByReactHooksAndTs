@@ -9,7 +9,9 @@
     "build-uat": "cross-env BUILD_ENV=uat node scripts/build.js",
     "build-prod": "cross-env BUILD_ENV=production node scripts/build.js",
     "unit-test": "node scripts/unit-test.js",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "config": {
     "commitizen": {
@@ -17,11 +19,16 @@
     }
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^6.0.21",
+    "@storybook/addon-essentials": "^6.0.21",
+    "@storybook/addon-links": "^6.0.21",
+    "@storybook/react": "^6.0.21",
     "commitizen": "^4.1.2",
     "cross-env": "^7.0.2",
     "cz-conventional-changelog": "^3.2.0",
     "gitmoji-cli": "^3.2.6",
-    "node-sass": "^4.14.1"
+    "node-sass": "^4.14.1",
+    "react-is": "^16.13.1"
   },
   "dependencies": {
     "@babel/core": "7.9.0",
