@@ -20,6 +20,9 @@ export default {
         { name: '#f40', value: '#f40' },
       ],
     },
+    // docs: {
+    //   page: null,
+    // },
   },
   // 装饰器
   decorators: [
@@ -39,6 +42,7 @@ const Template: Story<ButtonProps> = (args) => <Button {...args} />
 // )
 
 export const Primary = Template.bind({})
+Primary.parameters = { docs: { page: null } }
 
 Primary.storyName = '默认组件Primary📚📕📈🤓'
 Primary.args = {

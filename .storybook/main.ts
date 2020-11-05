@@ -5,8 +5,14 @@ module.exports = {
     '../src/**/*.stories.@(js|jsx|ts|tsx)',
   ],
   addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    // '../src/styles/index.scss',
+    {
+      name: '@storybook/addon-essentials',
+      options: {
+        '<addon-key>': false,
+      },
+    },
+    {
+      name: '@storybook/addon-links',
+    },
   ],
 }
