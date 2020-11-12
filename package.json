@@ -154,18 +154,6 @@
       "@utils/(.*)$": "<rootDir>/src/utils/$1",
       "@hooks/(.*)$": "<rootDir>/src/hooks/$1"
     },
-    "moduleFileExtensions": [
-      "web.js",
-      "js",
-      "web.ts",
-      "ts",
-      "web.tsx",
-      "tsx",
-      "json",
-      "web.jsx",
-      "jsx",
-      "node"
-    ],
     "watchPlugins": [
       "jest-watch-typeahead/filename",
       "jest-watch-typeahead/testname"

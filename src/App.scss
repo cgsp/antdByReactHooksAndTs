@@ -1,17 +1,17 @@
 .app {
   text-align: center;
 
-  .box {
-    border: 1px solid #eee;
-    width: 100%;
-    margin: 10px;
-    padding: 40px 0;
+  // .box {
+  //   border: 1px solid #eee;
+  //   width: 100%;
+  //   margin: 10px;
+  //   padding: 40px 0;
 
-    .test-arrow {
-      &:hover {
-        transform: rotate(-180deg);
-        transition: all .3s;
-      }
-    }
-  }
+  //   .test-arrow {
+  //     &:hover {
+  //       transform: rotate(-180deg);
+  //       transition: all .3s;
+  //     }
+  //   }
+  // }
 }
