@@ -2,8 +2,8 @@ import React, { useContext, FunctionComponentElement, useState } from 'react'
 import classnames from 'classnames'
 import { MenuContext } from './index'
 import { IMenuItemProps } from './MenuItem'
-import Icon from '@components/Icon'
-import Transition from '@components/Transition'
+import Icon from '@/components/Icon'
+import Transition from '@/components/Transition'
 
 export interface ISubMenuProps {
   index?: string

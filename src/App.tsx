@@ -1,7 +1,8 @@
 import React from 'react'
-import getGspName from '@utils/getGspName'
-import HooksCounter from '@hooks/HooksCounter'
-import { isDev } from '@utils/index'
+import getGspName from '@/utils/getGspName'
+// import HooksCounter from '@/hooks'
+import HooksCounter from '@/hooks/HooksCounter'
+import { isDev } from '@/utils'
 import './App.scss'
 // library.add(faCheckSquare, faCoffee)
 
