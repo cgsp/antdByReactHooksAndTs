@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import axios from 'axios'
 import { throttle } from 'lodash-es'
 interface IProps {
@@ -19,9 +19,7 @@ const Comp: React.FC<IProps> = ({ name }) => {
     console.log(result)
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.target && console.log('value', e.target.value)
-  }
+  const handleChange = throttle((value) => console.log(value), 400)
 
   useEffect(() => {
     fetchData()
@@ -30,7 +28,10 @@ const Comp: React.FC<IProps> = ({ name }) => {
   return (
     <div>
       <p>{query}</p>
-      <input type="text" onChange={throttle(handleChange, 200)} />
+      <input
+        type="text"
+        onChange={(e) => e.target && handleChange(e.target.value)}
+      />
     </div>
   )
 }
