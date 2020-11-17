@@ -7,7 +7,7 @@ import SubMenu from '@/components/Menu/SubMenu'
 import DisplayName from '@/components/Test/DisplayName'
 import Icon from '@/components/Icon'
 import Transition from '@/components/Transition'
-import HooksCounter from '@/hooks/HooksCounter'
+// import HooksCounter from '@/hooks/HooksCounter'
 import './App.scss'
 // library.add(faCheckSquare, faCoffee)
 
@@ -104,7 +104,6 @@ function App() {
         </Transition>
       </div>
       <div className="box">哈哈</div>
-      <HooksCounter />
     </div>
   )
 }

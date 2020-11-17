@@ -12,3 +12,4 @@ export const isUat = BUILD_ENV === 'uat' ? true : false
 
 // 是否为生产环境
 export const isProd = BUILD_ENV === 'production' ? true : false
+
