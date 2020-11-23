@@ -1,55 +1,61 @@
-import React, { useState, useEffect, useCallback } from 'react'
-import axios from 'axios'
-import { debounce } from 'lodash-es'
+import React, { useState, useEffect } from 'react'
+import httpMethods from './util'
+
+console.log(httpMethods.get('xx', { data: { a: 1 } }))
 interface IProps {
   name: string
 }
 
 const Comp: React.FC<IProps> = ({ name }) => {
-  const [query, setQuery] = useState('react')
-  const [hit, setHit] = useState('')
+  const [count, setCount] = useState(5)
+  const [familyName, setFamilyName] = useState('gsp')
 
-  const getFetchUrl = (query: string) => {
-    return `https://hn.algolia.com/api/v1/search?query=${query}`
-  }
+  // []这个参数，有几种写法
+  // 1、不写===数组写全[部分A，部分B，...]
+  // 2、写空数组[]，只有初次渲染(effect)，和卸载时候(clean)，执行
+  // 3、数组只写部分A[部分A]，只有初次渲染(effect)，部分A变化(如果部分B变化了之后，再让部分A变化，读取的部分B，clean时候还是旧的，effect时候是新的)、卸载时候(clean)，执行
 
-  // const handleChange = debounce((value) => {
-  //   console.log(value)
-  //   setQuery((preQuery) => value)
-  // }, 200)
+  // !如果不写 或者 写全 或者写[count]，执行的逻辑是:初始化时候执行1 => 5秒后，执行2，执行clean，执行1 => 5秒后，执行2，执行clean，执行1...
+  // !可以看出，此时，无论是写setInterval，还是写setTimeout，效果是一样的
+  // !count的值，从5一直递增
 
-  const handleChange = useCallback(
-    debounce((value) => {
-      console.log(value)
-      setQuery((preQuery) => value)
-    }, 200),
-    []
-  )
+  // !如果写[]，同时写 setInterval的话，执行逻辑是：初始化执行1 => 5秒后，执行2 => 5秒后，执行2 => 5秒后，执行2 => 5秒后，执行2...
+  // !count的值，从5到6后，然后就不变了
 
-  const fetch = async (didClean: boolean) => {
-    const res = await axios(getFetchUrl(query))
-    if (!didClean) setHit(res.data.nbHits)
-  }
+  // !如果写[]，同时写 setTimeout 的话，执行逻辑是：初始化执行1 => 5秒后，执行2
+  // !count的值，从5到6后，然后就不变了
 
   useEffect(() => {
-    let didClean = false
-
-    fetch(didClean)
-
+    console.log('执行1')
+    const timer = setTimeout(() => {
+      console.log('执行2')
+      setCount(count + 1)
+    }, 5000)
     return () => {
-      didClean = true
+      clearTimeout(timer)
+      console.log('clean')
     }
-  }, [query])
+  }, [])
 
   return (
-    <div>
-      <p>hit: {hit}</p>
-      <p>query: {query}</p>
-      <input
-        type="text"
-        onChange={(e) => e.target.value && handleChange(e.target.value)}
-      />
-    </div>
+    <React.Fragment>
+      <p
+        key="count"
+        onClick={() => {
+          setCount(3)
+        }}
+      >
+        {count}
+      </p>
+      <p
+        key="familyName"
+        onClick={() => {
+          setFamilyName('chang')
+        }}
+      >
+        {familyName}
+      </p>
+    </React.Fragment>
   )
 }
 
